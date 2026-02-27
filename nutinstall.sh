@@ -47,14 +47,22 @@ fi
 # Install Nut
 apt install -y nut nut-snmp
 
-# Download and extract configuration files
-if [ ! -f "nutconfig.tar.gz" ]; then
-    echo "Downloading Configuration..."
-    wget https://raw.githubusercontent.com/steven-geo/proxmox-nut/refs/heads/master/nutconfig.tar.gz -O nutconfig.tar.gz
-else
-    echo "Using Existing Configuration tarball"
-fi
-tar -xvzf nutconfig.tar.gz -C /etc
+# Download configuration files directly (no tarball)
+# These 4 vars let you point the installer to YOUR fork / branch / profile folder
+GH_OWNER="devstuff2453"
+GH_REPO="proxmox-nut"
+GH_REF="main"
+GH_PROFILE="profiles/default"
+
+GH_BASE="https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_REF}/${GH_PROFILE}"
+
+echo "Downloading configuration files from ${GH_OWNER}/${GH_REPO}@${GH_REF} (${GH_PROFILE}/) ..."
+mkdir -p /etc/nut
+
+for f in nut.conf ups.conf upsd.conf upsd.users upsmon.conf upssched-cmd upssched.conf; do
+  echo "  - ${f}"
+  wget -qO "/etc/nut/${f}" "${GH_BASE}/${f}" || { echo "ERROR: failed to download ${GH_BASE}/${f}"; exit 1; }
+done
 
 echo "Configuring NUT"
 echo "  UPS IP Address = ${IPADDR}"
