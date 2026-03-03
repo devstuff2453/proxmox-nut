@@ -22,7 +22,7 @@ Launch a shell terminal. I recommend using the xterm.js type.
 Run the following commands, with your UPS configuration options on the ```./nutinstall.sh``` commandline
 
 ```
-wget -O nutinstall.sh https://raw.githubusercontent.com/devstuff2453/proxmox-nut/main/nutinstall.sh
+wget -O nutinstall.sh https://raw.githubusercontent.com/devstuff2453/proxmox-nut/master/nutinstall.sh
 chmod +x nutinstall.sh
 ./nutinstall.sh -a <UPSIPADDRESS> -c <SNMPCOMMUNITY>
 ```
