@@ -51,7 +51,7 @@ apt install -y nut nut-snmp
 # These 4 vars let you point the installer to YOUR fork / branch / profile folder
 GH_OWNER="devstuff2453"
 GH_REPO="proxmox-nut"
-GH_REF="main"
+GH_REF="master"
 GH_PROFILE="profiles/default"
 
 GH_BASE="https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_REF}/${GH_PROFILE}"
