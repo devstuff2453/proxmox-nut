@@ -52,7 +52,7 @@ apt install -y nut nut-snmp
 GH_OWNER="devstuff2453"
 GH_REPO="proxmox-nut"
 GH_REF="master"
-GH_PROFILE="profiles/default"
+GH_PROFILE="${GH_PROFILE:-profiles/default}"
 
 GH_BASE="https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_REF}/${GH_PROFILE}"
 
